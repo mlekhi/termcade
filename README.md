@@ -81,9 +81,15 @@ state, no framework. The renderer never owns the loop — you do.
 A material is just two functions — a vertex shader and a fragment shader:
 
 ```ts
+import { type Material, type Mat4, mat4MulVec4 } from 'ascii-3d';
+
 const flat: Material<{ mvp: Mat4 }> = {
-  vertex: (u, v) => ({ clip: mat4MulVec4(u.mvp, { ...v.position, w: 1 }), varying: {} }),
-  fragment: () => ({ r: 255, g: 80, b: 200 }),
+  vertex: (u, v) => ({
+    clip: mat4MulVec4(u.mvp, { ...v.position, w: 1 }),
+    world: v.position, normal: v.normal, uv: v.uv, color: v.color,
+    bary: { x: 0, y: 0, z: 0 },
+  }),
+  fragment: () => ({ r: 255, g: 80, b: 200, a: 1 }), // RGBA, or return null to discard
 };
 ```
 
@@ -95,6 +101,39 @@ Because the look lives in the material, one renderer drives every visual style.
 npm run example     # live spinning cube (q to quit)
 npm run snapshot    # render one frame to .snapshots/cube.ppm (headless, no TTY)
 ```
+
+## Loading textures (Node only)
+
+PNG decoding is the one part that needs a Node builtin (`node:zlib`), so it
+lives in a separate subpath. The core renderer above never imports it:
+
+```ts
+import { decodePng } from 'ascii-3d/png';   // Node / Bun only
+import { sampleTexture } from 'ascii-3d';     // platform-neutral
+
+const tex = decodePng(await readFile('logo.png'));
+const rgba = sampleTexture(tex, 0.5, 0.5);
+```
+
+## Compatibility
+
+Verified end-to-end by installing the packed tarball into a fresh project and
+running it under each target:
+
+| Target | Status |
+| --- | --- |
+| Node ≥18 (ESM) | ✅ |
+| Bun (ESM + native TS) | ✅ |
+| TypeScript via `tsx` | ✅ |
+| `tsc` types — `Bundler` & `NodeNext` resolution | ✅ |
+| esbuild / bundlers — Node target | ✅ |
+| esbuild / bundlers — **browser** (core, no `ascii-3d/png`) | ✅ ~13 kB, no Node builtins |
+| `require()` (CommonJS) | ❌ ESM-only — use `import` or dynamic `import()` |
+| `ascii-3d/png` in the browser | ❌ needs `node:zlib` |
+
+**ESM-only.** The main entry (`ascii-3d`) is pure compute and bundles for the
+browser; only `ascii-3d/png` is Node/Bun-bound. CommonJS consumers must use a
+dynamic `import()`.
 
 ## License
 
