@@ -1,0 +1,57 @@
+{
+  "name": "ascii-3d",
+  "version": "0.1.0",
+  "description": "Software 3D renderer that draws to the terminal with truecolor half-blocks and shape-matched glyphs. Pure TypeScript, no GPU, no native deps.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "NOTICE.md"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "type-check": "tsc --noEmit",
+    "example": "tsx examples/cube/index.ts",
+    "snapshot": "tsx examples/cube/snapshot.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "ascii",
+    "3d",
+    "renderer",
+    "terminal",
+    "tui",
+    "software-rasterizer",
+    "truecolor",
+    "half-block"
+  ],
+  "author": "mlekhi",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mlekhi/ascii-3d.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mlekhi/ascii-3d/issues"
+  },
+  "homepage": "https://github.com/mlekhi/ascii-3d#readme",
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@types/node": "22.10.5",
+    "tsx": "4.19.2",
+    "typescript": "5.7.3"
+  }
+}
