@@ -1,6 +1,6 @@
-# arcade-terminal
+# termcade
 
-arcade-terminal renders real 3D in your terminal. It rasterizes triangles in plain
+termcade renders real 3D in your terminal. It rasterizes triangles in plain
 TypeScript and paints them with truecolor half-blocks or shape-matched glyphs.
 There's no GPU, no WebGL, and no native dependencies, just math and characters.
 
@@ -17,7 +17,7 @@ that you can do whatever you like with.
 ## Install
 
 ```bash
-npm install arcade-terminal
+npm install termcade
 ```
 
 It's ESM only and runs on Node 18+ or Bun, with zero runtime dependencies.
@@ -32,7 +32,7 @@ import {
   RenderTarget, rasterize, downsample, toHalfBlock,
   cube, lambertMaterial, cameraMatrices,
   mat4Multiply, mat4RotX, mat4RotY, normalize3, type Camera,
-} from 'arcade-terminal';
+} from 'termcade';
 
 const SS = 2;
 const cols = process.stdout.columns ?? 80;
@@ -90,7 +90,7 @@ vertex stage projects each point into clip space, and the fragment stage decides
 the color of each pixel.
 
 ```ts
-import { type Material, type Mat4, mat4MulVec4 } from 'arcade-terminal';
+import { type Material, type Mat4, mat4MulVec4 } from 'termcade';
 
 const flat: Material<{ mvp: Mat4 }> = {
   vertex: (u, v) => ({
@@ -120,8 +120,8 @@ lives behind its own subpath and the core renderer never imports it. That keeps
 the main entry safe to bundle for the browser.
 
 ```ts
-import { decodePng } from 'arcade-terminal/png';   // Node and Bun only
-import { sampleTexture } from 'arcade-terminal';    // platform-neutral
+import { decodePng } from 'termcade/png';   // Node and Bun only
+import { sampleTexture } from 'termcade';    // platform-neutral
 
 const tex = decodePng(await readFile('logo.png'));
 const rgba = sampleTexture(tex, 0.5, 0.5);
@@ -139,12 +139,12 @@ project, and running it for real.
 | TypeScript via `tsx` | ✅ |
 | `tsc` types (`Bundler` and `NodeNext` resolution) | ✅ |
 | esbuild and other bundlers, Node target | ✅ |
-| esbuild and other bundlers, **browser** (core, no `arcade-terminal/png`) | ✅ ~13 kB, no Node builtins |
+| esbuild and other bundlers, **browser** (core, no `termcade/png`) | ✅ ~13 kB, no Node builtins |
 | `require()` (CommonJS) | ❌ ESM only, use `import` or a dynamic `import()` |
-| `arcade-terminal/png` in the browser | ❌ needs `node:zlib` |
+| `termcade/png` in the browser | ❌ needs `node:zlib` |
 
 In short, the main entry is pure compute and bundles for the browser, while
-`arcade-terminal/png` is the only thing tied to Node or Bun. If you're on CommonJS,
+`termcade/png` is the only thing tied to Node or Bun. If you're on CommonJS,
 reach it through a dynamic `import()`.
 
 ## Development

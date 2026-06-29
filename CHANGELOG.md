@@ -16,6 +16,6 @@ Initial release.
 - Terminal encoders: `toHalfBlock`, `toShapeGlyph`, `toLuminance`.
 - Meshes (`cube`, `quad`, `tetrahedron`, `parseObj`), camera matrices, vector and
   matrix math, `downsample`, and `bloom`.
-- `arcade-terminal/png` subpath for PNG decoding (Node/Bun only); the core entry stays
+- `termcade/png` subpath for PNG decoding (Node/Bun only); the core entry stays
   platform-neutral and bundles for the browser.
 - Runnable cube example and a headless snapshot script.

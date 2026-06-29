@@ -1,5 +1,5 @@
 {
-  "name": "arcade-terminal",
+  "name": "termcade",
   "version": "0.1.0",
   "description": "Software 3D renderer that draws to the terminal with truecolor half-blocks and shape-matched glyphs. Pure TypeScript, no GPU, no native deps.",
   "type": "module",
@@ -44,12 +44,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mlekhi/arcade-terminal.git"
+    "url": "git+https://github.com/mlekhi/termcade.git"
   },
   "bugs": {
-    "url": "https://github.com/mlekhi/arcade-terminal/issues"
+    "url": "https://github.com/mlekhi/termcade/issues"
   },
-  "homepage": "https://github.com/mlekhi/arcade-terminal#readme",
+  "homepage": "https://github.com/mlekhi/termcade#readme",
   "engines": {
     "node": ">=18"
   },

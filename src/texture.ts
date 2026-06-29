@@ -2,10 +2,10 @@ import type { RGBA } from './color.ts';
 
 // An RGBA8 image in memory: row-major, top-left origin, 4 bytes/pixel. The
 // engine's only image primitive — decode a PNG into one (decodePng, from the
-// `arcade-terminal/png` subpath) then read it with sampleTexture. Knows nothing about
+// `termcade/png` subpath) then read it with sampleTexture. Knows nothing about
 // where the bytes came from (the caller reads files / fetches URLs and hands us
 // the buffer), matching parseObj. This module is platform-neutral — no node
-// builtins — so the core renderer bundles for the browser; only `arcade-terminal/png`
+// builtins — so the core renderer bundles for the browser; only `termcade/png`
 // pulls node:zlib.
 export interface Texture {
   width: number;
