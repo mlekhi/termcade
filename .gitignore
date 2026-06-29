@@ -3,3 +3,5 @@ dist/
 .snapshots/
 *.log
 .DS_Store
+
+*.tgz
