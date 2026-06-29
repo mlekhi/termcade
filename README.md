@@ -1,5 +1,11 @@
 # termcade
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/mlekhi/termcade/main/assets/coin.gif" width="240" alt="A spinning Mario-style gold coin rendered in the terminal with termcade" />
+  <br />
+  <em>A spinning coin, rendered entirely in the terminal. See <a href="examples/coin/scene.ts">examples/coin</a>.</em>
+</p>
+
 termcade renders real 3D in your terminal. It rasterizes triangles in plain
 TypeScript and paints them with truecolor half-blocks or shape-matched glyphs.
 There's no GPU, no WebGL, and no native dependencies, just math and characters.
