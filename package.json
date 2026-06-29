@@ -1,5 +1,5 @@
 {
-  "name": "ascii-3d",
+  "name": "arcade-terminal",
   "version": "0.1.0",
   "description": "Software 3D renderer that draws to the terminal with truecolor half-blocks and shape-matched glyphs. Pure TypeScript, no GPU, no native deps.",
   "type": "module",
@@ -44,12 +44,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mlekhi/ascii-3d.git"
+    "url": "git+https://github.com/mlekhi/arcade-terminal.git"
   },
   "bugs": {
-    "url": "https://github.com/mlekhi/ascii-3d/issues"
+    "url": "https://github.com/mlekhi/arcade-terminal/issues"
   },
-  "homepage": "https://github.com/mlekhi/ascii-3d#readme",
+  "homepage": "https://github.com/mlekhi/arcade-terminal#readme",
   "engines": {
     "node": ">=18"
   },

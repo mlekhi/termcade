@@ -38,6 +38,6 @@ frame = setInterval(() => {
   t += 1 / FPS;
   renderCube(target, t);
   display = downsample(target, SS, display);
-  const hud = `\x1b[${rows};1H\x1b[2m ascii-3d — spinning cube · q: quit \x1b[0m\x1b[K`;
+  const hud = `\x1b[${rows};1H\x1b[2m arcade-terminal · spinning cube · q: quit \x1b[0m\x1b[K`;
   process.stdout.write('\x1b[H' + toHalfBlock(display) + hud);
 }, 1000 / FPS);

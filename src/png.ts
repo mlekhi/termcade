@@ -1,7 +1,7 @@
 import { inflateSync } from 'node:zlib';
 import type { Texture } from './texture.ts';
 
-// PNG decode lives in its own subpath (`ascii-3d/png`) because it is the only
+// PNG decode lives in its own subpath (`arcade-terminal/png`) because it is the only
 // part of the library that needs a node builtin (node:zlib). Keeping it out of
 // the main barrel lets the core renderer bundle cleanly for the browser.
 
